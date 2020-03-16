@@ -1,0 +1,32 @@
+1. Quantitat de registres de la taula vols:
+
+resultat: 
+total = 4758
+
+Consulta:
+SELECT COUNT(*) FROM usairlineflights2.flights;
+
+
+
+2. Retard promig de sortida i arribada segons l'aeroport origen.
+
+Consulta:
+SELECT Origin , AVG(ArrDelay) , AVG(DepDelay) FROM usairlineflights2.flights group by Origin;
+
+
+
+3.	Retard promig d’arribada dels vols, per mesos, anys i segons l’aeroport origen. A més, volen que els resultat es mostrin de la següent forma (fixa’t en l’ordre de les files):
+    LAX, 2000, 01, 10
+    LAX, 2000, 02, 30
+    LAX, 2000, 03, 2
+    …
+    LAX, 2000, 12 , 4
+    LAX, 2001, 01, 5
+    …
+    LAX, 2001, 12, 4
+    ONT, 2000, 01, 6
+    ONT, 2000, 02, 3
+    etc.
+
+Consulta:
+
