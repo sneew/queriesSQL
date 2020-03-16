@@ -29,4 +29,6 @@ SELECT Origin , AVG(ArrDelay) , AVG(DepDelay) FROM usairlineflights2.flights gro
     etc.
 
 Consulta:
+SELECT Origin , colYear , colMonth, ArrDelay FROM usairlineflights2.flights order by Origin , colYear;
+
 
