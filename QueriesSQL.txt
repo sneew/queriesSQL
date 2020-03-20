@@ -10,6 +10,8 @@ SELECT
 FROM 
     usairlineflights2.flights;
 
+//el count serveix per comptar elements de la taula;
+
 
 
 2. Retard promig de sortida i arribada segons l'aeroport origen.
@@ -25,8 +27,9 @@ FROM
 group by
     Origin
 order by 
-    Origin;
+    Origin ASC;
 
+//AVG fa la mitjana; GROUP BY el posem perquè ens agrupi per cada origen diferent i sinó ens ho suma tot; AS li posa un nom a la columna;
 
 
 3.	Retard promig d’arribada dels vols, per mesos, anys i segons l’aeroport origen. A més, volen que els resultat es mostrin de la següent forma (fixa’t en l’ordre de les files):
@@ -83,6 +86,7 @@ order by
     flights.colYear ASC,
     flights.colMonth ASC;
 
+//LEFT JOIN ens permet unir dues taules, en aquest cas ens relaciona origen de flights amb l'id de la taula usairports;
 
 
 5.	Les companyies amb més vols cancelats, per mesos i any. A més, han d’estar ordenades de forma que les companyies amb més cancel·lacions apareguin les primeres.
@@ -104,6 +108,8 @@ group by
 order by
 	total_cancelled DESC;
 
+//SUM fa la suma en aquest cas de cancelled;
+
 
 
 6.	L’identificador dels 10 avions que més distància han recorregut fent vols.
@@ -124,9 +130,24 @@ ORDER BY
 LIMIT
 	10;
 
+//LIKE 'N%' busca tots els que comencin per la lletra N; LIMIT és per dir la quantitat de resultats
+
 
 
 7.	Companyies amb el seu retard promig només d’aquelles les quals els seus vols arriben al seu destí amb un retràs promig major de 10 minuts.
 
 Consulta:
 
+SELECT 
+	UniqueCarrier,
+    AVG(ArrDelay) AS avgDelay
+FROM 
+	usairlineflights2.flights
+GROUP BY
+	UniqueCarrier
+HAVING
+	avgDelay > 10
+ORDER BY
+	avgDelay DESC;
+
+//HAVING (després de GROUP BY) es fa quan vols més condicions i quan vols trebalar amb groups
